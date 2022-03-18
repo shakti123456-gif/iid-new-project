@@ -1,0 +1,93 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+<title>Franchisee Portal - Indian Institute of Drones</title>
+<style>
+  .profile-image {
+    vertical-align: center;
+    width: 270px;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .table td:nth-child(2) {
+    font-weight: bold !important;
+  }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+{% if not s2 %}
+
+<center>
+
+<img src="{% static 'images/Logo/lock.png' %}" alt="not Loaded" height="400px"/>
+
+<center>
+
+<span style="font-size:35px"> Access Restricted </span>
+
+
+{% else %}
+<div class="container-fluid univ-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1>Franchise Admin Portal</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="my-profile py-5">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-12 text-center">
+          <img src="{{request.user.pro_pic.url}}" class="profile-image">
+        </div>
+
+        <div class="col-sm-8">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Franchisee Owner</td>
+                <td>{{ request.user.first_name}} {{request.user.last_name }}</td>
+              </tr>
+
+              <tr>
+                <td>Franchisee Location</td>
+                <td>{{s1.location}} </td>
+              </tr>
+
+              <tr>
+                <td>Certificates Generated </td>
+                <td> {{s3}} </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <a href="{% url 'account:certificate' %}"><button type="submit"
+              class="btn btn-block btn-md btn-success">Generate Certificate</button></a>
+          <br>
+          <a href="{% url 'account:check1' %}"><button type="submit" class="btn btn-block btn-md btn-primary">Student
+              List</button></a>
+        </div>
+
+
+
+
+
+
+
+
+</section>
+
+
+{% endif %}
+
+
+{% endblock %}

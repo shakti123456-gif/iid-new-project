@@ -1,0 +1,211 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+{% load crispy_forms_tags %}
+<title>My Account - Indian Institute of Drones</title>
+
+<style>
+    .profile-image{
+    vertical-align: middle;
+    width: 270px;
+    height: auto;
+    border-radius: 5px;
+}
+.buttons{
+    padding:50px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+{% endblock %}
+{% block content %}
+
+
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>MY ACCOUNT</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<div class="main_div">
+    <div class="buttons">
+    <a href="#" onclick="divVisibility('Div1');">SOUTH</a> | 
+    <a href="#" onclick="divVisibility('Div2');">EAST</a> | 
+    <a href="#" onclick="divVisibility('Div3');">WEST</a> | 
+    <a href="#" onclick="divVisibility('Div4');">NORTH</a>
+    </div>
+    <div class="inner_div">
+    <div id="Div1">
+ 
+      <h2>SOUTH ZONE </h2>
+
+<table>
+  <tr>
+    <th>student Name</th> 
+    <th>Category</th>
+    <th>Experience</th>
+    <th>resume</th>
+    <th>zone</th>
+  </tr>
+  {% for i in student_apply  %}
+  {% if i.zone == 'SZ'  %}
+  <tr>
+    <td>{{i.student_profile}}</td>
+    <td>{{i.Category}}</td>
+    <td>{{i.Experience}}</td>
+    <th>{{i.resume}}</th>
+    <th>{{i.zone}}</th>
+
+  </tr>
+  {% endif %}
+  
+  {% endfor %}  
+  
+</table>
+  
+    </div>
+    
+    <div id="Div2" style="display: none;">
+      <h2>EAST ZONE </h2>
+      <table>
+        <tr>
+          <th>student Name</th>
+          <th>Category</th>
+          <th>Experience</th>
+          <th>resume</th>
+          <th>zone</th>
+        </tr>
+        {% for i in student_apply  %}
+        {% if i.zone == 'EZ'  %}
+        <tr>
+          <td>{{i.student_profile}}</td>
+          <td>{{i.Category}}</td>
+          <td>{{i.Experience}}</td>
+          <th>{{i.resume}}</th>
+          <th>{{i.zone}}</th>
+      
+        </tr>
+        {% endif %}
+        
+        {% endfor %}  
+        
+      </table>
+    
+    
+    </div>
+    
+    <div id="Div3" style="display: none;">
+      <h2>WEST  ZONE </h2>
+
+      <table>
+        <tr>
+          <th>student Name</th>
+          <th>Category</th>
+          <th>Experience</th>
+          <th>resume</th>
+          <th>zone</th>
+          <th>detail</th>
+        </tr>
+        {% for i in student_apply  %}
+        {% if i.zone == 'WZ'  %}
+        <tr>
+          <td>{{i.student_profile}}</td>
+          <td>{{i.Category}}</td>
+          <td>{{i.Experience}}</td>
+          <th>{{i.resume}}</th>
+          <th>{{i.zone}}</th>
+          <th><a href={{i.get_absolute_url}}>Detail View<a/></th>
+        </tr>
+        {% endif %}
+        
+        {% endfor %}  
+        
+      </table>
+    </div>
+    
+    
+    <div id="Div4" style="display: none;">
+        <h2> NORTH ZONE </h2>
+      <table>
+        <tr>
+          <th>student Name</th>
+          <th>Category</th>
+          <th>Experience</th>
+          <th>resume</th>
+          <th>zone</th>
+        </tr>
+        {% for i in student_apply  %}
+        {% if i.zone == 'NZ'  %}
+        <tr>
+          <td>{{i.student_profile}}</td>
+          <td>{{i.Category}}</td>
+          <td>{{i.Experience}}</td>
+          <th>{{i.resume}}</th>
+          <th>{{i.zone}}</th>
+      
+        </tr>
+        {% endif %}
+        
+        {% endfor %}  
+        
+      </table>
+    
+    
+    </div>
+    
+  </div>
+    </div>
+    
+    
+
+</section>
+</div>
+<script>
+
+    var divs = ["Div1", "Div2", "Div3", "Div4"];
+    var visibleDivId = null;
+    function divVisibility(divId) {
+      if(visibleDivId === divId) {
+        visibleDivId = null;
+      } else {
+        visibleDivId = divId;
+      }
+      hideNonVisibleDivs();
+    }
+    function hideNonVisibleDivs() {
+      var i, divId, div;
+      for(i = 0; i < divs.length; i++) {
+        divId = divs[i];
+        div = document.getElementById(divId);
+        if(visibleDivId === divId) {
+          div.style.display = "block";
+        } else {
+          div.style.display = "none";
+        }
+      }
+    }
+</script>
+
+{% endblock %}
+
+</div>

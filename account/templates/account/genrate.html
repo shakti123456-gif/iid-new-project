@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+{% load crispy_forms_tags %}
+<title>My Account - Indian Institute of Drones</title>
+
+<style>
+
+#button1{
+    width: 300px;
+    height: 40px;
+}
+#button2{
+    width: 300px;
+    height: 40px;
+}
+#container{
+    text-align: center;
+} 
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>Generate PDF</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<br/>
+
+<div id="container">
+
+
+    <a class='btn btn-primary mb-2' href="{% url 'app:CheckoutView_student' %}">Proceed to Payment</a>
+     
+    <a class='btn btn-primary mb-2' href="{% url 'account:show' %}">Check Sample </a>
+    
+</div>
+
+{% endblock %}

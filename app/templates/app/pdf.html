@@ -1,0 +1,132 @@
+<!doctype html>
+
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&family=Montserrat:wght@100&family=STIX+Two+Math&display=swap" rel="stylesheet">
+  
+<style>
+
+
+*{
+font-family: 'Kaisei Tokumin', serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'STIX Two Math', serif;
+}
+
+@page { size: letter landscape; margin: 2cm; } 
+
+.heading1{
+  font-size: "20px";
+  text-align : "center";
+  
+}
+.heading2{
+  padding-top:"8px";
+  font-size: "14px";
+  text-align : "center";
+}
+
+.image-container{
+  display : 'flex';
+  margin-top:"50px";
+}
+
+.dp-img{
+width: "150px";
+}
+
+.details{
+  font-size:"16px";
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.sex-dob{
+  font-size: "16px";
+   text-transform: uppercase;
+  font-weight: 400;
+}
+.dob{
+  left:'80px';
+}
+
+.details-con{
+  marging-bottom:"50px";
+}
+
+.signCon{
+  display: inline-block;
+}
+
+
+
+ .inline{
+    display:inline-block;
+ }
+</style>
+
+</head>
+<body>
+
+ 
+
+<div class="container">
+   
+      <div class="heading1">
+          <span >PIONEER FLYING ACADEMY PRIVATE LIMITED </span><br />
+          <span>DHANIPUR AIRFIELD, ALIGARH, UTTAR PRADESH </span> 
+      </div>
+
+      
+      <div class="heading2">
+          <span> A DGCA-APPROVED RPAS TRAINING INSTITUTE</span>
+      </div>
+
+
+    <img src="{{sales.photo.path}}" id ="left" height="200px"/>  
+    
+    <img src="{{sales.photo.path}}" id ="right" height="200px"/>  
+
+    
+  <div class="details-con">
+       <div class="details">NAME: {{sales.name|upper}}</div>
+      <div class="details">ADDRESS: {{sales.Address|upper}}</div>
+      <div class="details">PHOTO ID:  {{sales.Photo_ID|upper}}</div>
+      <div class="sex-dob">
+         <span>SEX: {{sales.sex|upper}}</span>
+        <span class="dob">DOB: {{sales.Dob|upper}}</span>    
+      </div>
+      <div class="details">
+            1. HAS SUCCESSFULLY COMPLETED THE REMOTE PILOT TRAINING CAPSULE AS PER CIVIL AVIATION REQUIREMENTS
+            SECTION 3 SERIES X PART1
+      </div>
+      <div class="details">
+          2.CERTIFICATE NUMBER: {{sales.certificate_number}}
+      </div>   
+       <div class="details">
+         3.DATE OF ISSUE: {{sales.dateofissue|upper}}
+      </div> 
+       <div class="details">
+         4.CATEGORY OF RPA:{{sales.category|upper}}
+      </div> 
+       <div class="details">
+          5.VALID FROM: 08/07/2021-07/07/2022
+      </div>            
+  </div> 
+<pre>
+<img src="{{sales.photo.path}}" class="logo-img"  height="80px" />                                                                                                                    <img src="{{sales.photo.path}}" class="logo-img"  height="80px"/> 
+           
+</pre> 
+
+<p style=font-size:12px; align="left">SAROJ JOSHI (Accountable Manager)</p>    
+<p style=font-size:12px; align="right">SAROJ JOSHI (Accountable Manager)</p>     
+
+</div>   
+
+
+</body>
+</html>

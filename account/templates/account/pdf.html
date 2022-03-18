@@ -1,0 +1,92 @@
+<!doctype html>
+
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+
+
+
+{% comment %} <link href="{% static 'https://fonts.googleapis.com/css2?family=Charmonman&family=Permanent+Marker&display=swap' %}"  rel="stylesheet"> {% endcomment %}
+  
+<style>
+
+#right{    
+ text-align: right;  
+ }
+
+
+@page { size: letter landscape; margin: 2cm; } 
+
+
+
+</style>
+
+</head>
+<body>
+
+ 
+
+<div class="container">
+
+    <div class="sha">
+
+
+
+      <center>  
+      
+      <p style ="font-size: 25px;">PIONEER FLYING ACADEMY PRIVATE LIMITED </p>
+      
+      </center>
+
+
+
+
+  <center>
+     <p style ="font-size: 20px;">DHANIPUR AIRFIELD, ALIGARH, UTTAR PRADESH <p style ="font-size: 25px;">
+  </center>
+
+
+
+
+
+
+
+<p style ="font-size: 20px;">NAME: {{sales.name}} <br/>
+<p style ="font-size: 20px;">ADDRESS:{{sales.Address}} <br/>
+<p style ="font-size: 20px;">PHOTO ID:  {{sales.photoid}} <br/>
+<p style ="font-size: 20px;">SEX:{{sales.sex}}                          DOB:{{sales.Dob}}
+
+
+
+
+<img style="position:absolute; TOP:35px; LEFT:170px; WIDTH:50px; HEIGHT:50px" src="{{sales.photo.path}}" alt="temp" height='200px'>
+
+
+
+
+
+
+
+<br/>
+<br/>
+<br/>
+
+
+1. HAS SUCCESSFULLY COMPLETED THE REMOTE PILOT TRAINING CAPSULE AS PER CIVIL AVIATION REQUIREMENTS
+  SECTION 3 SERIES X PART1<br/>
+
+2.CERTIFICATE NUMBER: XXXXXXXXXXXXXXXXX <br/>
+3.DATE OF ISSUE: XXXXXXXXXXX <br/>
+4.CATEGORY OF RPA:{{sales.category}}<br/>
+5.VALID FROM:08/07/2021-07/07/2022<br/>
+
+
+
+
+</div>
+
+</div>
+
+</body>
+</html>

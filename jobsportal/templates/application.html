@@ -1,0 +1,88 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+{% load crispy_forms_tags %}
+<title>My Account - Indian Institute of Drones</title>
+
+<style>
+    .profile-image{
+    vertical-align: middle;
+    width: 270px;
+    height: auto;
+    border-radius: 5px;
+}
+</style>
+{% endblock %}
+{% block content %}
+
+
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>MY ACCOUNT</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="my-profile py-4">
+  <div class="container-fluid">
+		<div class="container">
+			<div class="row">
+        <div class="col-sm-1"></div>
+				<div class="col-md-5 col-sm-12">
+					<center>
+            <img src="{{request.user.pro_pic.url}}" class="profile-image">
+            <br><br>
+            <p style="font-size: 120%; font-weight: 500">
+              {{ request.user.first_name }} {{ request.user.last_name }}
+              <br>{{ request.user.email }}
+              <br>{{ request.user.phone }}          
+            </p>
+          </center>
+          <br>    
+           {% comment %} <a href="{% url ''%}"><button class="btn btn-block btn-md btn-primary">update profile</button></a>  {% endcomment %}
+          <br>
+      
+        
+        <a href="{% url 'jobportal:updateprofile' %}"><button type="submit" class="btn btn-block btn-md btn-primary mb-4">update Current profile</button> </a> 
+                      
+				</div>
+    
+				<div class="col-md-5 col-sm-12">
+          
+          {% if t%}
+          {% else %}
+          <form>
+            <fieldset disabled>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Category</label>
+                <input type="text" id="disabledTextInput" class="form-control" placeholder="{{student.Category}}">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Experience</label>
+                <input type="text" id="disabledTextInput" class="form-control" placeholder="{{student.Experience}} year">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Student Zone</label>
+                <input type="text" id="disabledTextInput" class="form-control" placeholder="{{student.zone}}">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Resume</label>
+                <input type="text" id="disabledTextInput" class="form-control" placeholder="{{student.resume}}">
+              </div>
+            
+          </fieldset>
+          </form>
+
+          {% endif %}
+
+
+				
+
+</section>
+{% endblock %}
+

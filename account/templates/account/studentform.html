@@ -1,0 +1,69 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_head %}
+<title>Generate Pilot Certificate - Franchisee Portal | Indian Institute of Drones</title>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>Generate Pilot Certificate</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-sm-12">
+                <form action="" class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
+                    {% csrf_token %}
+
+
+                    <div class="col-sm-6 ml-auto mr-auto py-1">
+                        {{ form.name|as_crispy_field }}
+                        {{ form.errors.cc_myself }}
+                    </div>
+                    <div class="col-sm-6 ml-auto mr-auto py-1">
+                        {{ form.sex|as_crispy_field }}
+                    </div>
+                    <div class="col-sm-6 ml-auto mr-auto py-1">
+                        {{ form.Address|as_crispy_field }}
+                    </div>
+
+                    <div class="col-sm-6 ml-auto mr-auto py-1">
+                        {{ form.dob|as_crispy_field }}
+                        {{ form.errors.dob }}
+                    </div>
+
+                    <div class="col-sm-6 ml-auto mr-auto py-1">
+                        {{ form.category|as_crispy_field }}
+                    </div>
+
+                    <div class="col-sm-6 ml-auto mr-auto py-1">
+                        {{form.Photo_ID|as_crispy_field }}
+                        {{form.blank|as_crispy_field}}
+                    </div>
+
+                    <div class="col-sm-6 ml-auto mr-auto py-1">
+                        {{ form.img|as_crispy_field }}
+                    </div>
+                    <div class="col-sm-6 ml-auto mr-auto py-2">
+                        <!-- <button type="submit" value="Submit"></button> -->
+                        <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

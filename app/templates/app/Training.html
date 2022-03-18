@@ -1,0 +1,183 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+<title>Training Schedule - Indian Institute of Drones | Best Drone Pilot Training India</title>
+<meta name="keywords" content="drone pilot courses, online drone courses, fixed wing drone pilot training, multirotor drone pilot training, dgca drone pilot courses">
+<meta name="description" content="Indian Institute of Drones. Become a UAV Pilot. Training Schedule for Drone Pilot Courses. Explore Professional Courses for UAVs/Drones">
+
+<style>
+    .sidebar{
+        background-color: #34495e;
+        display: block;
+        padding: 3% 4%!important;
+    }
+    .sidebar .ques{
+        font-size: 1.8rem;
+        color: #fff;
+    }
+    .head{
+        color: #b9b9b9;
+        font-size: 1.5rem;
+    }
+    .head span{
+        border-bottom: 1px solid #dedede;
+    }
+    .info{
+        color: #fff;
+        font-size: 1.1rem;
+    }
+    @media only screen and (max-device-width: 768px) {
+        .head{font-size: 0.9rem}
+        .info{font-size: 1.2rem}
+        .sidebar{padding: 3% 2%!important;}
+    }
+    .btnn-city{
+        border-radius: 25px!important;
+        border: 1px solid #000!important;
+        padding: 10px 50px;
+    }
+    .dropdown-menu-center{width: 250px}
+    .training-card{display: none}
+    .cont-det{display:none}
+    .details-card{
+        min-height: 180px;
+        padding: 10px 15px;
+    }
+    .date-city{
+        min-height: 150px;
+        background-color: #283B62;
+        color: #fff;
+        display: flex;
+        align-items: center;
+    }
+    .date-city h1{padding-left: 15px}
+    .date-city h1{font-size: 170%}
+    .date-city h1 span{font-size: 80%}
+    .course-details{
+        background-color: #f4f4f4!important;
+    }
+    .course-details h2{
+        font-size: 150%;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    .course-details ul{
+        padding-left: 20px;
+    }
+    .btn-cta{
+        margin-bottom: 8px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>TRAINING SCHEDULE</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="training-schedule">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="dropdown show text-center my-3">
+                        <a class="btn btn-secodary dropdown-toggle btnn-city" href="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select a City near you
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuLink">
+                            {% for i in list3 %}
+                            <a class="dropdown-item sel{{i.city}}" href="#" id="">{{i.city}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div id="map" class="py-3">
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1E1KhfpgOlHZc63BlHAF5J2ek1vK-hrz2" width="100%" height="350px"></iframe>
+                    </div>
+                    
+                    
+                    {% for i in object_list %}
+                    <div id="" class="training-card city{{i.city}}">
+                        <div class="row details-card">
+                            <div class="col-sm-5 date-city">
+                                <h1>
+                                    {{i.date}} <br>
+                                    <span>{{i.city}}</span>
+                                </h1>
+                            </div>
+                            <div class="col-sm-7 course-details" >
+                                <center><h2>{{i.coursename}}</h2></center>
+                                <ul>
+                                    <li>{{i.callme}}</li>
+                                    <li>{{i.callme2}}</li>
+                                </ul>
+                                <center><a href="course/{{i.sum}}" class="btn btn-success btn-cta">Enroll Now</a></center>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="col-sm-4 sidebar">
+                    <h4 class="ques text-center">
+                        Got Questions?<br>
+                        Get in touch
+                    </h4>
+
+                    <div class="cont-hq">
+                        <h4 class="head pt-5"><span>HEADQUARTERS</span></h4>
+                        <h4 class="info pt-2">C - 270, Pocket C, Sector - 71,<br>Noida - 201307</h4>
+                        <h4 class="head pt-5"><span>PHONE</span></h4>
+                        <h4 class="info pt-2">+91-8074611720</h4>
+                        <h4 class="head pt-5"><span>EMAIL</span></h4>
+                        <h4 class="info pt-2">director@iiodrones.com</h4>
+                    </div>
+                    {% for s in list3 %}
+                    <div class="cont-det con{{s.city}}">
+                        <h4 class="head pt-5"><span>ADDRESS</span></h4>
+                        <h4 class="info pt-2">{{s.Address}}</h4>
+                        <h4 class="head pt-5"><span>PHONE</span></h4>
+                        <h4 class="info pt-2">{{s.Phone1}}</h4>
+                        {% if i.Phone2 %}
+                        <h4 class="info pt-2">{{s.Phone2}}</h4>
+                        {% endif %}
+                        <h4 class="head pt-5"><span>EMAIL</span></h4>
+                        <h4 class="info pt-2">{{s.email1}}</h4>
+                        {% if i.email2 %}
+                        <h4 class="info pt-2">{{s.email2}}</h4>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        {% for i in list3 %}
+        $(".sel{{i.city}}").click(function(){
+            $("#map").hide(300);
+            $(".cont-hq").hide(300);
+            {% for i in show %}
+            $(".city{{i.city}}").hide(600);
+            $(".con{{i.city}}").hide(600);
+             {% endfor %}
+             $(".city{{i.city}}").show(600);
+             $(".con{{i.city}}").show(600);
+        });
+        {% endfor %}
+    });     
+</script> 
+
+
+{% endblock %}
+

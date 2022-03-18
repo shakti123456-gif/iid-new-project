@@ -1,0 +1,148 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<title>Order History - Indian Institute of Drones</title>
+
+<style>
+  .table {
+    margin-top: 20px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .rowone {
+    box-shadow: 0rem 0.3rem 1rem rgba(88, 88, 88, 0.2);
+  }
+
+  .rowtwo {
+    box-shadow: 0rem 1rem 2.5rem rgba(88, 88, 88, 0.5);
+  }
+
+  .blrow {
+    border-top: 0px !important;
+  }
+
+  @media only screen and (max-device-width: 480px) {
+    .cont-fluid {
+      padding: 2px 8px !important;
+    }
+
+    .cont-cont {
+      padding: 2px 8px !important;
+    }
+
+    .cont-col {
+      padding: 2px 4px !important;
+    }
+
+    .table {
+      font-size: 0.5rem;
+    }
+
+    .datacol {
+      padding: 6px 6px !important;
+      margin: 0px !important;
+    }
+  }
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid univ-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1>Order History</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if show %}
+<div class="container-fluid cont-fluid">
+  <div class="container cont-cont">
+    <div class="row">
+      <div class="col-sm-12 cont-col">
+        <table class="table">
+          <thead>
+            <tr class="">
+              <th class="datacol">Item Name</th>
+              <th class="datacol" style="text-align: center;">Quantity</th>
+              <th class="datacol" style="text-align: right;">Item Price</th>
+              <th class="datacol" style="text-align: right;">Total Price</th>
+            </tr>
+            <tr>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in order_qs %}
+
+            <tr class="rowone">
+              <td class="datacol">
+                {% for y in i.items.all %}
+                <i class="fas fa-angle-right"></i> {{y.item.title}}<br>
+                {% endfor %}
+              </td>
+
+              <td class="datacol" align="center">
+                {% for y in i.items.all %}
+                {{y.quantity}}<br>
+                {% endfor %}
+              </td>
+
+              <td class="datacol" align="right">
+                {% for y in i.items.all %}
+                ₹ {{y.get_total_item_price}}<br>
+                {% endfor %}
+              </td>
+
+              <td class="datacol" align="right">₹ {{i.get_total}}</td>
+            </tr>
+
+            <tr class="rowtwo">
+              <td class="datacol blrow" colspan="1"><b>Ordered Date:</b><br>{{i.ordered_date}}<br></td>
+              <td class="datacol blrow" align="center"><b>Order Status:</b><br>{{i.shipment}}<br></td>
+              {% if i.Tracking_field %}
+              <td class="datacol blrow" colspan="1" align="center"><b>Tracking URL:</b><br>{{i.Tracking_field}}<br></td>
+              {% else %}
+              <td class="datacol blrow" colspan="2" align="center"><b>Tracking URL:</b><br>--</td>
+              {% endif %}
+            </tr>
+
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="row py-4">
+      <div class="col-sm-12 text-center">
+        <img src="{% static 'images/Icons/empty-cart.png' %}" width="15%" height="auto">
+        <h1 style="font-size: 1.7em; padding: 15px 1px;">Your cart is empty!</h1>
+        <a href="{% url 'store:stores' %}"><button class="btn btn-primary" type="submit">Browse Our Product
+            Catalogue</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

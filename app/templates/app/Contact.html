@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TDVRGH4');</script>
+    <!-- End Google Tag Manager -->
+	{% block extra_head %}   
+	{% endblock %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/queries.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" async></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" async></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" async></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'images/favicon/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'images/favicon/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/favicon/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'images/favicon/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/favicon/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'images/favicon/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/favicon/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'images/favicon/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/android-icon-36x36.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/android-icon-48x48.png' %}">
+    <link rel="icon" type="image/png" sizes="72x72" href="{% static 'images/favicon/android-icon-72x72.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon/android-icon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="144x144" href="{% static 'images/favicon/android-icon-144x144.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'images/favicon/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
+    <link rel="manifest" href="{% static 'images/favicon/manifest.json' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'images/favicon/ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+
+
+<title>IID Centres and Locations - Indian Institute of Drones | Drone Training Institutes in India</title>
+<meta name="description" content="Indian Institute of Drones specializes in training Professionals and Drone Technology enthusiasts, who have the willingness to learn the art of flying drones to carry out UAV piloting and operations.">
+<meta name="keywords" content="drone pilot training, drone training in india, drone training in noida, drone training in chennai,drone training in andhra pradesh,drone training in hyderabad,drone training in bangalore,drone training in gujarat,drone training in sharjah,drone training in bangladesh,drone training in kozhikode,drone training in vijaywada">
+
+<style>
+    .cont-col{
+        padding: 5px 0px!important;
+    }
+    .add-info {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .add-content{color: #000;}
+    .contact-form-submit {
+        background-color: #283B62;
+        color: white;
+    }
+    
+    .cont-hr {
+        display: none;
+    }
+    
+    @media only screen and (max-device-width: 480px) {
+        .cont-hr {
+            display: block;
+        }
+        
+    }
+        
+    @media only screen and (min-device-width: 768px) {
+        .add-info iframe{
+            width: 150px;
+            height: 250px;
+        }
+    }
+    
+    @media only screen and (min-device-width: 1024px) {
+        .add-info iframe{
+            width: 250px;
+            height: 250px;
+        }
+    }
+</style>
+    </head>
+
+
+{% block content %}
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>OUR TRAINING CENTERS</h1>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<section class="contact-page">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row add-info">
+                <div class="col-sm-12 pb-3 text-center">
+                    <h2>Head Office and Test Flight Center</h2>
+                </div>
+                {% for i in object_list %}
+                {% if i.type == 'Head_Office' %}
+                <div class="col-sm-3 text-center cont-col">
+                    <iframe src="{{i.mapiframe}}" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="col-sm-3">
+                    <div class="add-content">
+                        <h4><b>{{i.city}}</b></h4>
+                        <p>
+                           {{i.Address}}<br><br>
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:{{i.Phone1}}"> {{i.Phone1}}<br></a>
+							{% if i.Phone2 %}
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:{{i.Phone2}}"> {{i.Phone2}}</a>
+                            <br>
+							{% endif %}
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:{{i.email1}}"> {{i.email1}}</a>
+                            <br>
+							{% if i.email2 %}
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:{{i.email2}}">  {{i.email2}}</a>
+							{% endif %}
+                        </p>
+                    </div>
+                    <hr class="cont-hr">
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            
+            <div class="row add-info">
+                <div class="col-sm-12 pb-3 text-center">
+                    <h2>Partners</h2>
+                </div>
+                {% for i in object_list %}
+                {% if i.type == 'Partners' %}
+                <div class="col-sm-3 text-center cont-col">
+                    <iframe src="{{i.mapiframe}}" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="col-sm-3">
+                    <div class="add-content">
+                        <h4><b>{{i.city}}</b></h4>
+                        <p>
+                           {{i.Address}}<br><br>
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:{{i.Phone1}}"> {{i.Phone1}}<br></a>
+                            {% if i.Phone2 %}
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:{{i.Phone2}}"> {{i.Phone2}}</a>
+                            <br>
+							{% endif %}
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:{{i.email1}}"> {{i.email1}}</a>
+                            <br>
+                            {% if i.email2 %}
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:{{i.email2}}">  {{i.email2}}</a>
+							{% endif %}
+                        </p>
+                    </div>
+                    <hr class="cont-hr">
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            
+            <div class="row add-info">
+                <div class="col-sm-12 pb-3 text-center">
+                    <h2>Franchisee</h2>
+                </div>
+                {% for i in object_list %}
+                {% if i.type == 'Franchisee' %}
+                <div class="col-sm-3 text-center cont-col">
+                    <iframe src="{{i.mapiframe}}" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="col-sm-3">
+                    <div class="add-content">
+                        <h4><b>{{i.city}}</b></h4>
+                        <p>
+                           {{i.Address}}<br><br>
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:{{i.Phone1}}"> {{i.Phone1}}<br></a>
+                            {% if i.Phone2 %}
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:{{i.Phone2}}"> {{i.Phone2}}</a>
+                            <br>
+							{% endif %}
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:{{i.email1}}"> {{i.email1}}</a>
+                            <br>
+                            {% if i.email2 %}
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:{{i.email2}}">  {{i.email2}}</a>
+							{% endif %}
+                        </p>
+                    </div>
+                    <hr class="cont-hr">
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

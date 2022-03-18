@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TDVRGH4');</script>
+    <!-- End Google Tag Manager -->
+    <title>{{course.title}} - Indian Institute of Drones</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/queries.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" async></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"
+        async></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'images/favicon/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'images/favicon/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/favicon/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'images/favicon/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/favicon/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'images/favicon/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'images/favicon/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'images/favicon/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/android-icon-36x36.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/android-icon-48x48.png' %}">
+    <link rel="icon" type="image/png" sizes="72x72" href="{% static 'images/favicon/android-icon-72x72.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon/android-icon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="144x144" href="{% static 'images/favicon/android-icon-144x144.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'images/favicon/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
+    <link rel="manifest" href="{% static 'images/favicon/manifest.json' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'images/favicon/ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        .back-btn {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .back-btn:hover {
+            text-decoration: none;
+            color: #ff6830;
+        }
+
+        .lesson-list-container {
+            background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #283B62 100%);
+            color: #fff;
+            padding: 30px 0px;
+            /* height: 100vh; */
+        }
+
+        .lesson-tabs {
+            list-style: none;
+            width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding: 0;
+        }
+
+        .lesson-tabs li {
+            display: block;
+            padding-bottom: 30px;
+        }
+
+        .lesson-tabs li:hover .lesson-title {
+            color: #ff6830;
+            transform: translateX(12px);
+            transition: 0.4s;
+        }
+
+        .lesson-tabs li:hover .lesson-thumb {
+            opacity: 0.8;
+        }
+
+        .thumb-div {
+            display: -ms-flex;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+        }
+
+        .lesson-thumb {
+            float: left;
+            width: 40%;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        .lesson-title {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        .lect-num {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body oncontextmenu="return false;">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TDVRGH4" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+    {% if course %}
+
+    {% if course.online_course %}
+
+
+    <div class="container-fluid lesson-list-container">
+        <div class="container">
+
+            <div class="row pb-5">
+                <div class="col-sm-12 text-center">
+                    <h1 class="pb-4">{{course.title}}<br><span style="font-size: 2rem;">Course Content</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row pb-4">
+                <div class="col-sm-8 pb-4">
+                    <div id="lsvid">
+                        <div id="vid-div">
+                            <video oncontextmenu="return false;" src="" type="video/mp4" width="100%" controls
+                                controlsList="nodownload"></video>
+                        </div>
+                    </div>
+                    <div class="my-2 text-center">
+                        <h5>Now Playing: <span id="lessname"></span></h5>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <ul class="lesson-tabs" id="RightDiv">
+                        {% for lesson in lessons %}
+
+                        <li id="thumb-{{lesson.position}}">
+                            <a href="#lession{{lesson.position}}" style="cursor: pointer; text-decoration: none;">
+                                <div class="thumb-div">
+                                    <img class="lesson-thumb" src="{{lesson.thumbnail.url}}"
+                                        alt="{{lesson}} in {{course.title}} Course on Indian Institute of Drones"
+                                        data-toggle="modal" data-target="#lession{{lesson.position}}">
+                                    <h3 class="lesson-title"><span class="lect-num">Lecture -
+                                            {{lesson.position}}</span><br>{{lesson}}</h3>
+                                </div>
+                            </a>
+                        </li>
+                        <script>
+                            document.getElementById("thumb-{{lesson.position}}").addEventListener("click", displayVid);
+                            function displayVid() {
+                                document.getElementById("lsvid").innerHTML = '<video oncontextmenu="return false;" src="{{lesson.video_file.url}}" width="100%" height="auto;" controls controlsList="nodownload"></video>';
+                                document.getElementById("lessname").innerHTML = '{{lesson}}';
+                            }
+                        </script>
+                        <script>
+                            var myDivHeight = $('#vid-div').css('height');
+                            $('.lesson-tabs').css('height', myDivHeight);
+                        </script>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row pt-4 pb-2">
+                <div class="col-sm-12 text-center">
+                    <a class="btn btn-info" href="{{course.text_book.url}}" target="_blank" rel="noreferrer">Download
+                        Course Textbook</a><br><br>
+                    <a class="btn btn-success" href="{{course.test_link}}" target="_blank" rel="noreferrer">Start
+                        Test</a>
+                    {% else %}
+                    <div class="" style="text-align: center; padding: 20px; background-color: #ecf0f1">
+                        <a class="btn btn-primary" href="{% url 'account:schedule' %}">View Training Schedule</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row pt-4 pb-2">
+                <div class="col-sm-12 text-center">
+                    <a href="" class="back-btn"> <i class="fas fa-long-arrow-alt-left"></i> Back to My Courses</a>
+                </div>
+                <script>
+                    $('.back-btn').on('click', function () {
+                        console.log(1);
+                        if (window.confirm('Are you sure you want to leave?')) {
+                            window.location.href = "{% url 'account:mycourses' %}";
+                        }
+                        else {
+                            return false
+                        }
+                        return false;
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <section style="padding: 20px; background-color: #fff;text-align: center">
+        <a href="{% url 'account:mycourses' %}" class="btn btn-primary">My Courses</a>
+    </section>
+    {% endif %}
+    <script>
+        document.onkeydown = function (e) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        }
+    </script>
+</body>

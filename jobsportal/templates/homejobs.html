@@ -1,0 +1,93 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+
+<style>
+.images
+{
+  margin-top:10px
+}
+
+.recent
+{
+  margin-top:10px
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="images">
+<img src="{% static 'images/jobportal/image.jpg' %}"  alt="not found" width="100%" height="600px"/>
+
+</div>
+
+<h2 align="center">job portal</h2>
+
+
+
+<div  class="container">
+
+
+<form  action="" method="POST" enctype='multipart/form-data'>
+
+{% csrf_token %}
+
+search jobs name:
+<input type="text" name="id3" required placeholder="enter Jobs"
+  oninvalid="this.setCustomValidity('enter the value ')"
+  oninput="this.setCustomValidity('')"/>
+
+
+search location:
+<input type="text"  name="id4" required placeholder="Enter the location"
+  oninvalid="this.setCustomValidity('type perfect search')"
+  oninput="this.setCustomValidity('')"/>
+
+
+ <input type="submit" value="submit">
+
+</form>
+
+
+{% if job %}
+
+<div class="card-deck">
+{% for i in job %}
+
+  <div class="card">
+    <img class="card-img-top" src={{i.Campy.image.url}} alt="Card image cap"/>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+
+    <a href="{{i.get_absolute_url}}" class="button">check for the job </a> 
+  </div>
+
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="recent">
+
+<div style="text-align: center;">
+<span  align="center" style="font-size:50px; border:3px solid ;"> Recent updated </span> 
+</div>
+
+</div>
+
+
+
+{% endif %}
+    
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+<title>Contact Us - Indian Institute of Drones | Drone Training Institutes in India</title>
+<meta name="description" content="Indian Institute of Drones specializes in training Professionals and Drone Technology enthusiasts, who have the willingness to learn the art of flying drones to carry out UAV piloting and operations.">
+<meta name="keywords" content="drone pilot training, drone training in india, drone training in noida, drone training in chennai,drone training in andhra pradesh,drone training in hyderabad,drone training in bangalore,drone training in gujarat,drone training in sharjah,drone training in bangladesh,drone training in kozhikode,drone training in vijaywada,drone training in coimbatore,drone training in mumbai,drone training in pune">
+
+<style>
+    .cont-col{
+        padding: 5px 0px!important;
+    }
+    .add-info {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .add-content{color: #000;}
+    .contact-form-submit {
+        background-color: #283B62;
+        color: white;
+    }
+    
+    .cont-hr {
+        display: none;
+    }
+    .cont-iframe{
+        border: none;
+    }
+    @media only screen and (max-device-width: 480px) {
+        .cont-hr {
+            display: block;
+        }
+        
+    }
+        
+    @media only screen and (min-device-width: 768px) {
+        .add-info iframe{
+            width: 150px;
+            height: 250px;
+        }
+    }
+    
+    @media only screen and (min-device-width: 1024px) {
+        .add-info iframe{
+            width: 250px;
+            height: 250px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="iframe-div">
+    <div class="">
+        <iframe id="myIframe" class="responsive-iframe cont-iframe" src="{% url 'app:iid-loc' %}" width="100%"></iframe>
+    </div>
+</div>
+
+<script>
+    var iframe = document.getElementById("myIframe");
+    iframe.onload = function(){
+        var heightt = ((iframe.contentWindow.document.body.scrollHeight)*1.01)+ 'px';
+        iframe.style.height = heightt;
+    }
+</script>
+
+<div class="container pb-3" style="max-width: 600px">
+    <div class="row py-1">
+        <div class="col-sm-12">
+            <h2 class="py-2" style="font-size: 2.5rem; text-align: center">Get In Touch</h2>
+            <div class="contact-form-content">
+                <div class="contact-form-main">
+                    <form method="POST" class="">
+                        {% csrf_token %}
+                        <div class="contact-form-fields">
+                            <div class="row contact-field-row-1">
+                                <div class="col-lg-6 colg-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        {{form.first_name}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 colg-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        {{form.last_name}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row contact-field-row-2">
+                                <div class="col-lg-6 colg-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        {{form.email}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 colg-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        {{form.phone}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row contact-field-row-3">
+                                <div class="col-lg-12 colg-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        {{form.Location}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row contact-field-row-4">
+                                <div class="col-lg-12 colg-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        {{form.query}}
+                                    </div>
+                                </div>
+                            </div>
+                          
+
+                            <div class="row">
+                                <div class="col-lg-12 colg-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        {{form.captcha}}
+
+                                        {% if form.errors %}
+                                        <font color="red">
+                                            <br>
+                                            Invalid CAPTCHA
+                                        </font>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row contact-field-row-3">
+                                <div class="col-lg-12 colg-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <font color="grey">
+                                            {{form.captcha.help_text}}
+                                        </font>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <button type="submit" class="btn btn-success btn-block contact-form-submit">SUBMIT</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

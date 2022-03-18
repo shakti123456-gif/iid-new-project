@@ -1,0 +1,36 @@
+
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+<style>
+.sam{
+    padding:50px;
+}
+</style>
+{% endblock %}
+
+
+
+{% block content%}
+
+
+<div class="container sam">
+
+
+{{students.student_profile}}
+<br/>
+{{students.Category}}
+
+<br/>
+{{students.Experience}}
+
+<br/>
+{{students.resume}}
+<br/>
+{{students.zone}}
+
+
+</div>
+
+{% endblock %}

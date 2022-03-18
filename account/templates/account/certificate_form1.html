@@ -1,0 +1,70 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+{% load crispy_forms_tags %}
+<title>Student List - Indian Institute of Drones</title>
+
+<style>
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid univ-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1>Student List</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid my-2">
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-sm-12">
+        <table class="table">
+          <tr>
+            <th>Student Name</th>
+            <th>Certificate Number</th>
+            <th>Date of Issue</th>
+            <th>Category</th>
+            <th>Status</th>
+          </tr>
+
+          {% for i in s %}
+          <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.certificate_number}}</td>
+            <td>{{i.dateofissue}}</td>
+            <td>{{i.category}}</td>
+
+            {% if i.approved %}
+            {% if i.completed %}
+
+            <td><a href="{{i.show }}">Download</a></td>
+
+            {% endif %}
+
+            {% else %}
+
+            <td>
+              Pending Approval
+            </td>
+
+            {% endif %}
+          </tr>
+
+          {% endfor %}
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

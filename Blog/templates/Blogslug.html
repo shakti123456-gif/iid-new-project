@@ -1,0 +1,129 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<title>Blog - Indian Institute of Drones | Military Certified Drone Pilot Instructors</title>
+<meta name="keywords" content="drone pilot courses, online drone courses, fixed wing drone pilot training, multirotor drone pilot training">
+<meta name="description" content="">
+
+<style>
+    .blog-content{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        padding: 20px !important;
+        border: solid 0.1px #adadad;
+    }
+    .auth-img{
+        border-radius: 50% 50%;
+        width: 60px;
+        display: inline-block;
+    }
+    .auth-details{
+        padding-left: 10px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .auth-name{
+        font-size: 110%;
+        line-height: 0.5;
+    }
+    .blog-date,
+    .reading-time{
+        font-size: 80%;
+        opacity: 0.9;
+        line-height: 0.5;
+    }
+    .share-link {
+        float: right;
+        border: none;
+        background-color: #fff !important;
+    }
+    .blog-img{
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    .blog-title{
+        margin: 0;
+        padding: 20px 0px;
+        font-size: 200%;
+    }
+    .return:hover{
+        text-decoration: none;
+    }
+    .blog-cover-img{
+        margin-top: 20px;
+        background-image: url({{object.imageurl}});
+        min-height: 400px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    @media only screen and (max-device-width: 480px){
+        .blog-cover-img{
+            min-height: 300px;
+        }
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" style="background-color: #eaeaea;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 blog-content">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <img class="auth-img" src="{{object.image}}" alt="{{object.show}}">
+                        <span class="auth-details">
+                            <span class="auth-name">{{object.show}}</span><br>
+                            <span class="blog-date">{{object.Date}}</span> | <span class="reading-time"></span>
+                        </span>
+                    </div>
+                </div>
+                
+<!--
+                <button class="share-link" onclick="copyURL()">
+                    <span></span><i class="fas fa-link"></i>
+                </button>
+-->
+                <div class="blog-cover-img"></div>
+                <article id="post">    
+                    <h1 class="blog-title">{{object.title}}</h1>
+                    <p>{{object.Content | safe}}</p>
+                    {{object.datetrue}}
+                </article>
+                <hr>
+                <a class="return" href="{% url 'Blog:list_view' %}"><i class="fas fa-angle-left"></i> Back to Blogs</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>    
+    const post = document.getElementById("post");
+    const readingTimeSummary = document.querySelector(".reading-time");
+    const avgWordsPerMin = 250;
+
+    setReadingTime();
+
+    function setReadingTime() {
+      let count = getWordCount();
+      let time = Math.ceil(count / avgWordsPerMin);
+
+      readingTimeSummary.innerText = time + " min. read";
+    }
+
+    function getWordCount() {
+      return post.innerText.match(/\w+/g).length;
+    }
+
+</script>
+
+
+
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+<title>Webinars and Events - Indian Institute of Drones</title>
+<meta name="keywords" content="drone pilot courses, online drone courses, fixed wing drone pilot training, multirotor drone pilot training">
+<meta name="description" content="Latest Webinar and Events related to Drones/UAVs, webinars on latest UAV trends organized by Indian Institute of Drones (IID) and Johnnette">
+
+<style>
+    .tablewrapp{
+        padding: 2px !important;
+        border-radius: 10px;
+        box-shadow: 5px 8px 10px #888888;
+    }
+    .table{
+        margin-bottom: 5px!important;
+    }
+    .thead-custom{
+        box-shadow: 5px 7px 9px rgba(136, 136, 136, 0.67);
+    }
+    .tb-head{
+        text-align: center;
+        background: #283B62;
+        color: #fff;
+        font-size: 110%;
+        font-weight: 400;
+    }
+    .rad-left{
+        border-top-left-radius: 8px!important;
+    }
+    .rad-right{
+        border-top-right-radius: 8px!important;
+    }
+    .tb-body tr{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .tbd{
+        text-align: center;
+        opacity: 0.9;
+        font-size: 90%;
+    }
+    .tbspk{
+        font-size: 90%;
+    }
+    .spk{
+        font-weight: bold;
+        text-align: left!important;
+    }
+    .div-link{
+        transition: transform 2;
+    }
+    .div-link:hover{
+        transform: scale(1.1);
+    }
+    .web-link{
+        font-size: 90%;
+    }
+    .web-link:hover{
+        text-decoration: none;
+        color: #ff6830;
+    }
+    
+    @media only screen and (max-device-width: 480px){
+        .tb-head{
+            font-size: 60%;
+        }
+        .tb-body td{
+            font-size: 60%;
+        }
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>Webinars and Events</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid"> 
+    <div class="container">
+        <div class="row py-3">
+            <div class="col-sm-12 tablewrapp">
+                <table class="table table-borderless table-custom">
+                    <thead class="thead-custom">
+                        <tr>
+                            <th width="20%" class="tb-head rad-left" scope="col">Date</th>
+                            <th width="25%" class="tb-head" scope="col">Topic</th>
+                            <th width="30%" class="tb-head" scope="col">Tentative Speakers</th>
+                            <th width="20%" class="tb-head rad-right" scope="col">Registration Link</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tb-body">
+                        {% for i in s %}
+                        <tr>
+                            <td class="tbd">{{i.date}}</td>
+                            <td class="tbd">{{i.topic}}</td>
+                            <td class="tbspk">
+
+                                {% if  i.description1 %}
+                                <span class="spk">Speaker 1:<br></span>
+                                {{i.description1}}
+                                <br>
+                                <br>
+                                {% endif  %}
+                                
+                                {% if  i.description2 %}
+                                <span class="spk">Speaker 2:<br></span>
+                                {{i.description2}}
+                                <br>
+                                <br>
+                                {% endif  %}
+                                
+                                {% if i.description3 %}
+                                <span class="spk">Speaker 3:<br></span>
+                                {{i.description3}}
+                                <br>
+                                <br>
+                                {% endif  %}
+                                
+                                {% if  i.description4 %}
+                                <span class="spk">Speaker 4:<br></span>
+                                {{i.description4}}
+                                <br>
+                                <br>
+                                {% endif  %}
+                                
+                                {% if  i.description5 %}
+                                <span class="spk">Speaker 5:<br></span>
+                                {{i.description5}}
+                                {% endif  %}
+
+                            </td>
+                            <td class="tbd"><div class="div-link"><a class="web-link" href="{{i.registration_url }}">{{i.registration_url }} <i class="fas fa-external-link-alt"></i></a></div></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

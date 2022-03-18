@@ -1,0 +1,253 @@
+{% extends 'app/base.html' %}
+{% block extra_head %}
+
+{% load static %}
+<title>Order History - Indian Institute of Drones</title>
+
+<style>
+  .item_pic{
+    padding: 2px 1px;
+  }
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>Order History</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+
+{% if show %}
+
+<div class="container-fluid">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Ordered Date </th>
+                  <th scope="col">Items</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Item Price</th>
+                  <th scope="col">Order Amount</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Tracking URL <i class="fas fa-external-link-alt"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in order_qs  %}
+                <tr>
+                  <td>{{i.ordered_date}}</td>
+                  <td>
+                    {% for y in i.items.all %}
+                    <img class="item_pic" src= "{{y.item.images.url}}" alt="{{y.item.title}}" width="40px" height="30px">
+                    {{y.item.title}}<br>
+                    {% endfor %} 
+                  </td>
+                  <td>
+                    {% for y in i.items.all %}
+                    {{y.quantity}}<br>
+                    {% endfor %} 
+                  </td>
+                  <td>
+                    {% for y in i.items.all %}   
+                    ₹ {{y.get_total_item_price}}<br>
+                    {% endfor %}
+                  </td>
+                  <td>
+                    ₹ {{i.get_total}}
+                  </td>
+                  <td>
+                    {{i.shipment}}
+                  </td>
+                  <td>
+                    {% if i.Tracking_field %}
+                    <a href="{{i.Tracking_field}}" style="font-size: 0.7em;" target="_blank" rel="noreferrer">{{i.Tracking_field}}</a>
+                    {% else %}
+                    --
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% else %}
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <img class="center" src="{% static 'images/book.png' %}"  width="400px" height="400px">
+        <h3 align="center">you do not have active order </h3>
+        <a href="{% url "store:stores"  %}"><button align="center" class="btn btn-primary hide2" type="submit">Products </button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+<!-- 
+<div class="container">
+
+  <img class="center" src="{% static 'images/book.png' %}"  width="400px" height="400px" />
+  
+  <br/>
+  
+  
+  <div class"None" align="center">
+  
+  <h3 align="center">you do not have active order </h3>
+  
+  {% comment %}  {% endcomment %}
+  <a href="{% url "store:stores"  %}"><button align="center" class="btn btn-primary hide2" type="submit">Products </button></a>
+  
+  
+  </div>
+  
+  
+  
+  </div>
+  
+  {% endif %}
+
+
+<div class="container">
+  <br/>
+ <div class="shakti">
+ <table class="table table-striped">
+  <thead>
+    <tr>
+     <th scope="col">Ordered Date </th>
+      <th scope="col">Items </th>
+      <th scope="col">quantity</th>
+      <th scope="col">Amount </th>
+      <th scope="col">Total Amount </th>
+      <th scope="col">Status </th>
+      <th scope="col">Tracking </th>
+    </tr>
+  </thead>
+    
+
+  <tbody>
+
+ 
+  {% for i in order_qs  %} 
+
+  <tr>
+   <td>{{i.ordered_date}}</td>
+        
+        <td>
+        {% for y in i.items.all %}
+    
+     <img src= "{{y.item.images.url}}" alt=""  width="50px" height="20px" />
+     {{y.item.title}}
+    
+
+    <br/>
+    
+    {% endfor %} 
+    </td>
+    <td >
+    {% for y in i.items.all %}
+
+    {{y.quantity}}
+
+    <br/>
+  {% endfor %}
+
+  </td>  
+  <td> 
+  
+  {% for y in i.items.all %}
+
+    ₹ {{y.get_total_item_price}}
+
+    <br/>
+
+  {% endfor %}
+
+</td>
+  <td>₹ {{i.get_total}}</td>
+
+  
+
+  <td>{{i.shipment}} </td>
+
+  {% if i.Tracking_field %}
+
+  <td><a  href="{{i.Tracking_field}}" >{{i.Tracking_field}} </a></td>
+
+  {% else %}
+
+  <td> -- <td> 
+
+  {% endif %}
+  
+  </tr>
+   {% endfor %} 
+    
+ </tbody>
+  
+</table>
+
+</div>
+
+</div>
+
+{% comment %} 
+<div class="123" />
+
+
+</div> {% endcomment %}
+
+
+{% else %}
+
+
+<div class="container">
+
+<img class="center" src="{% static 'images/book.png' %}"  width="400px" height="400px" />
+
+<br/>
+
+
+<div class"None" align="center">
+
+<h3 align="center">you do not have active order </h3>
+
+{% comment %}  {% endcomment %}
+<a href="{% url "store:stores"  %}"><button align="center" class="btn btn-primary hide2" type="submit">Products </button></a>
+
+
+</div>
+
+
+
+</div>
+
+{% endif %}
+
+
+<br/>
+</div>
+ -->
+

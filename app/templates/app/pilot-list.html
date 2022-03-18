@@ -1,0 +1,211 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+<title>Pilot List - Indian Institute of Drones | Drone Pilot Training India</title>
+<meta name="keywords"
+    content="drone pilot courses, online drone courses, fixed wing drone pilot training, multirotor drone pilot training">
+<meta name="description"
+    content="Pilot list of Indian Institute of Drones. Get Certified by Ex - UAV Military Instructors. Become a UAV Pilot.">
+{% endblock %}
+
+{% block content %}
+<style>
+    #myInput {
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color: black;
+    }
+
+    .table {
+        border-collapse: separate;
+        border-spacing: 0px 15px !important;
+    }
+
+    table tbody tr {
+        background-color: #fff;
+        box-shadow: 0px 0px 10px #e2e2e2;
+    }
+
+    table tbody tr:hover {
+        background-color: #283B62;
+        color: #ffffff;
+        text-shadow: 1px 2px #000000;
+        box-shadow: 0px 0px 10px #ff6830;
+        -webkit-box-shadow: 0px 0px 10px #ff0000;
+        -moz-box-shadow: 0px 0px 10px #ff0000;
+        transform: scale(1.015);
+    }
+
+    .fa-sort-alpha-up:hover {
+        cursor: pointer;
+    }
+
+    #myTable a{
+        text-decoration: none;
+        color: #ff6830;
+        padding-left: 10px;
+    }
+    #myTable a:hover{
+        color: #000;
+    }
+
+    @media only screen and (max-device-width: 480px) {
+        .table {
+            font-size: 0.55rem !important;
+        }
+
+        .pilot_list .container-fluid {
+            padding: 0px 2px !important;
+        }
+
+        .pilot_list .col-sm-12 {
+            padding: 0px 1px !important;
+        }
+
+        .pilot_list th,
+        .pilot_list td {
+            padding: 10px 5px !important;
+        }
+    }
+</style>
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>PILOT LIST</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="pilot_list my-3">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="text" style="color:black" id="myInput" onkeyup="myFunction()"
+                        placeholder="Search for a pilot name..." title="Type a name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table" id="myTable">
+                        <thead>
+                            <th onclick="sortTable(0)">Name <a href="javascript: void"><i class="fas fa-sort-alpha-up"></i></a></th>
+                            <th>Organization</th>
+                            <th>Date</th>
+                            <th>Course Name</th>
+                            <th>Certificate No.</th>
+                        </thead>
+                        <tbody>
+                            {% for pilot in pilots %}
+                            <tr class="custom-row">
+                                <td>{{pilot.name}}</td>
+                                <td>{{pilot.organization}}</td>
+                                <td>{{pilot.date}}</td>
+                                <td>{{pilot.course}}</td>
+                                <td>{{pilot.certificate_no}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            td1 = tr[i].getElementsByTagName("td")[5];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc";
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /*check if the two rows should switch place,
+                based on the direction, asc or desc:*/
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                //Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /*If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again.*/
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    $('#myTable a').click(function () {
+        // $(this).next('ul').slideToggle('500');
+        $(this).find('i').toggleClass('fa-sort-alpha-up fa-sort-alpha-up-alt')
+    });
+</script>
+
+{% endblock %}

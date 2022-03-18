@@ -1,0 +1,167 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+{% block extra_head %}
+<title>Store - Indian Institute of Drones</title>
+
+<style>
+    .main-card{
+        padding: 8px 8px!important;
+    }
+    .main-card:hover{
+        transform: scale(1.05);
+    }
+    .cards-wrapper{
+        display: grid;
+        justify-content: left;
+        align-content: center;
+        border-radius: 0.5em;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0.5em 0.9em 3em -1em black;
+        transition: all, var(--transition-time);
+        border: 5px solid #ccc;
+    }
+
+    .item-card{
+        padding: 2rem 2rem;
+        height: 24em;
+        width: 22em;
+        color: #fff;
+        border-radius: 0.3rem;
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        transition: all, var(--transition-time);
+    }
+
+    .item-card:hover{
+        text-decoration: none;
+        transform: rotate(0);
+        color: #ff6830;
+        transform: scale(1.1);
+    }
+
+    .item-card h1{
+        margin: 0;
+        text-align: left;
+        font-size: 1.8em;
+        line-height: 1.2em;
+    }
+    .item-price {
+        font-size: 1.1rem;
+    }
+
+    .item-desc {
+        font-size: 0.8rem;
+    }
+
+    @media only screen and (max-device-width: 480px) {
+        .item-card{
+            padding: 2rem 1rem;
+            width: 18em;
+        }
+        
+        .item-card h1{
+        margin: 0;
+        text-align: left;
+        font-size: 1.5em;
+        line-height: 1.1em;
+        }
+
+        .item-price {
+            font-size: 1rem;
+        }
+
+        .item-desc {
+            font-size: 0.7rem;
+        }
+    }
+
+    @media only screen and (max-device-width: 768px) {
+        .item-card{
+            padding: 2rem 0.7rem;
+            width: 14em;
+        }
+
+        .item-card h1{
+        margin: 0;
+        text-align: left;
+        font-size: 1.3em;
+        line-height: 1.2em;
+        }
+
+        .item-price {
+            font-size: 1.2rem;
+        }
+
+        .item-desc {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media only screen and (max-device-width: 1024px) {
+        .item-card{
+            padding: 2rem 1rem;
+            width: 18em;
+        }
+
+        .item-card h1{
+        margin: 0;
+        text-align: left;
+        font-size: 1.4em;
+        line-height: 1.2em;
+        }
+
+        .item-price {
+            font-size: 1.2rem;
+        }
+
+        .item-desc {
+            font-size: 0.9rem;
+        }
+</style>
+
+
+{% endblock %}
+
+
+{% block content  %}
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 class="edit">Store</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row py-4">
+            {% for item  in object_list %}
+            <div class="col-sm-4 main-card py-2 my-1">
+                <div class="cards-wrapper" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url({{item.images.url}});">
+                    <div class="card-grid-space">
+                        <a class="item-card" href="{{item.get_absolute_url}}">
+                            <div class="card-content">
+                                <h1>{{item.title}}</h1>
+                                <span class="item-price">₹ {{item.price}}</span><br>
+                                <span class="item-desc">{{item.description1}}</span>
+                                
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,207 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block extra_head %}
+
+<title>Order Summary</title>
+
+<style>
+    
+    .cart-page-header {
+    background: #283B62;
+    color: #fff;
+    }
+
+    .cart-page-header h1 {
+        margin: 40px auto;
+    }
+
+    .order-summary {
+        background-color: #fff;
+    }
+
+    .order-table {
+        margin: 40px 0px !important;
+    }
+
+    .tdtooltip{
+        position: relative;
+        display: inline-block;
+        cursor: no-drop;
+    }
+    .tooltipp{
+        margin-left: 10px;
+        padding: 4px;
+        font-size: 0.9em;
+        visibility: hidden;
+        position: absolute;
+        text-align: center;
+        background-color: #000;
+        color: #fff;
+        width: 200px;
+        border-radius: 0.5em;
+    }
+    .tdtooltip:hover .tooltipp{
+        visibility: visible;
+    }
+
+    .clhide{
+        display: table-cell;
+    }
+
+    @media only screen and (max-device-width: 480px) {
+        .col-cont{
+            padding: 1px 2px!important;
+        }
+        
+        .table-cont{
+            padding: 1px 2px!important;
+        }
+        .order-table{
+            font-size: 0.55rem;
+        }
+        .ordsum{
+            padding: 12px 3px!important;
+        }
+        .odsum{
+            padding: 12px 3px!important;
+        }
+        .odsm{
+            padding: 12px 3px!important;
+        }
+        .odtr{
+            padding: 12px 3px!important;
+        }
+        .fa-minus, .fa-plus{
+            font-size: 0.4rem;
+        }
+
+        .tooltipp{
+            width: 120px;
+            right:0px;
+            font-size: 0.8em;
+        }
+
+        .clhide{
+            display:none;
+        }
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>ORDER SUMMARY</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="order-summary">
+    <div class="container-fluid">
+        <div class="container table-cont">
+            <div class="row">
+                <div class="col-sm-12 col-cont">
+                    <table class="table order-table">
+                        <thead>
+                            <tr>
+                                <th class="ordsum">Item Name</th>
+                                <th class="ordsum"><center> Quantity </center></th>
+                                <th class="ordsum clhide" style="text-align: right;"> Rate </th>
+                                <th class="ordsum" style="text-align: right;"> Amount </th>
+                                <th class="odtr"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if empty %}
+                            {% for order_item in object.items.all %}
+                            <tr>
+                                <td class="odsum">{{ order_item.item.title }}</td>
+                                <td class="odsum"><center> 
+                                    <a href="{% url 'app:remove-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a> 1 
+                                    <div class="tdtooltip"><a><i class="fas fa-plus ml-2"></i></a>
+                                    <span class="tooltipp">You cannot add more than 1<br> quantity of same course</span></div>
+                                </center>
+                                </td>
+                                <td class="odsum clhide" align="right">₹ {{ order_item.item.price }}</td>
+                                <td class="odsum" align="right">₹ {{ order_item.item.price }}</td>
+                                <td class="odtr">
+                                    <a style="color: #ff0000" href="{% url 'app:remove-from-cart' order_item.item.slug %}">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            
+                        
+                             {% for i in temp.items.all %}
+                            <tr>
+                                <td class="odsum">{{i.item.title}}</td>
+                                <td class="odsum">
+                                    <center> <a href="{% url 'store:remove_item_from_cart' i.item.slug  %}"><i class="fas fa-minus mr-2"></i></a>
+                                    {{i.quantity}}
+                                    <a href="{% url 'store:add-to-cart' i.item.slug  %}"><i class="fas fa-plus ml-2 "></i></a> </center>
+                                </td>
+                                <td class="odsum clhide" align="right">₹ {{i.item.price}}</td>
+                                <td class="odsum" align="right">₹ {{i.get_total_item_price}}</td>
+                                <td class="odtr"><a style="color: #ff0000" href="{% url 'store:remove' i.item.slug %} "><i class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                               
+                            <tr>
+                                <td class="odsm clshow" colspan="1"><strong>Order Total</strong></td>
+                                <td class="odsm" colspan="1" align="right"><strong>₹ {{object.get_total}}</strong></td>
+                                <td></td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td class="py-4"> <b> Your Cart is Empty </b></td>
+                            </tr>   
+                            {% endif %}                   
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-2">
+                    <a class='btn btn-primary mb-2' href="{% url 'app:courses' %}">Browse Courses</a>
+                </div>
+                <div class="col-lg-2">
+                    <a class='btn btn-primary mb-2' href="{% url 'store:stores' %}">Browse Products</a>
+                </div>
+                <div class="col-lg-2">
+                    <a class='btn btn-success mb-2' href="{% url 'app:checkout' %}">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(document).ready(function() {
+        checkSize();
+        $(window).resize(checkSize);
+    });
+
+    function checkSize(){
+        if ($('td.clhide').css('display') === 'table-cell' ) {
+            $('.clshow[colspan]').attr('colspan', '3');
+        } else {
+            $('.clshow[colspan]').attr('colspan', '2');
+        }
+    }
+</script>
+
+
+{% endblock %}
+

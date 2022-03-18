@@ -1,0 +1,47 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+
+<style>
+
+.sam{
+    margin-top:50px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container sam">
+
+    {{jobsdesc}}
+    <br/>
+    {{jobsdesc.title}}
+    <br/>
+
+    {{jobsdesc.description}}
+    
+    <br/>
+    <br/>
+
+{% comment %} <a href="" <button type="button" class="btn btn-success">Apply</button> </a> {% endcomment %}
+
+{{member.usermembership}}
+<form action=""  method="POST" >
+    {% csrf_token %}
+
+<input type="submit" value="Apply" />
+
+</form>
+
+
+
+<br/>
+
+<br/>
+
+</div>
+
+
+
+{% endblock %}

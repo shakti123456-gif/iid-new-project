@@ -1,0 +1,106 @@
+{% extends "app/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    @media only screen and (max-device-width: 480px) {
+        .order-table{
+            font-size: 0.5rem;
+        }
+
+        .col-cfluid{
+            padding: 2.5px;
+        }
+
+        .col-cont{
+            padding: 2.5px;
+        }
+
+        th{
+            padding: 6px 4px !important;
+        }
+        td{
+            padding: 6px 4px !important;
+        }
+    }
+
+</style>
+
+<div class="container-fluid univ-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>CHECKOUT</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="checkout-page py-3">
+    <div class="container-fluid col-cfluid">
+        <div class="container">
+            <div class="row">
+                <h2>Review Your Order</h2>
+                <div class="col-sm-12 col-cont">
+                    <table class="table order-table">
+                        <thead>
+                            <tr>
+                                
+                                <th> Item Name </th>
+                                <th style="text-align: center;">Type</th>
+                                <th style="text-align: right;">Price</th>
+                            </tr>
+                        
+                        </thead>
+                
+                        <tbody>
+
+                            <tr>
+                            <td>{{order.usermembership.email }}</td>
+                            <td align="center">{{member.membership_type}}</td>
+                            <td align="right">₹ {{ member.price }}</td>
+         
+                        
+                            <tr>
+                                <td colspan="2"><b>Order Total</b></td>
+                                <td align="right"><b>₹{{ member.price}}</b></td>
+                            </tr>
+                            
+                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="checkout-page pb-3">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <h2>Checkout Options</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <form method="POST" class="">
+                        {% csrf_token %}
+                        {% for value, name in form.fields.payment_option.choices %}
+                        <div class="custom-control custom-radio">
+                          <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio" class="custom-control-input" required>
+                          <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
+                        </div>
+                        {% endfor %}
+                        <hr>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed to Payment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

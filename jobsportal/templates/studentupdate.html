@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block extra_head %}
+
+
+<style>
+.sam{
+    margin-top:50px;
+    margin-bottom:50px;
+
+}    
+
+</style>
+{% endblock %}
+
+{% block content%}
+
+
+<div class="container sam">
+
+    {{form.errors}}
+
+<form  method="POST" action="" enctype="multipart/form-data">
+ {% csrf_token %}
+{{ student.as_p }} 
+<input type="submit" value="submit"/>
+
+</form>
+</div>
+{% endblock %}

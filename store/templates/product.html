@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+
+{% block extra_head %}
+<title>{{object.title}} - Store | Indian Institute of Drones</title>
+
+<style>
+    .prod-detail-div{
+        position: relative;
+        min-height: 400px;
+    }
+    .prod-desc2{
+        position: absolute;
+        bottom: 5px;
+        
+    }
+    @media only screen and (max-device-width: 480px) {
+        .card-title{
+            font-size: 1.8rem;
+        }
+    }
+</style>
+
+{% endblock %}
+
+{% block content  %}
+
+<div class="container-fluid univ-header">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12 text-center">
+              <h1>{{object.title}}</h1>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container-fluid">
+  <div class="container">
+      <div class="row py-3">
+          <div class="col-sm-6 text-center my-2">
+             <img id="" src="{{object.images.url}}" class="" alt="" width="100%" height="auto">
+          </div>
+          <div class="col-sm-6 prod-detail-div">
+              <h1 class="card-title">{{object.title}}</h4>
+              <p class="overflow-auto">{{object.description2|safe}} </p>
+              <a class="prod-desc2" href="{{object.add_to_cart}}">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Add to cart <i class="fas fa-cart-plus pl-2"></i></button>
+              </a>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
